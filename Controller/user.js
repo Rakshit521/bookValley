@@ -94,7 +94,7 @@ async function LoginUser(req, res) {
         if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
         //Step 3: Generate JWT token
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ _id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
         //Step 4: Respond with token & user details
         res.json({
