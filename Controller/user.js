@@ -64,7 +64,7 @@ async function RegisterUser(req, res) {
 
         const emailLower = email.toLowerCase();
 
-        user = new User({ name, emailLower, password: hashedPassword });
+        user = new User({ name, email: emailLower, password: hashedPassword });
         await user.save();
 
         const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: "1h" });
